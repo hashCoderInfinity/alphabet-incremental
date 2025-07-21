@@ -14,6 +14,7 @@ clicked = False
 # GAME var
 point = 0
 point_g = 1
+a = 0
 
 # functions
 def Text(text, x, y, size, color, font="freesansbold.ttf"):
@@ -22,7 +23,7 @@ def Text(text, x, y, size, color, font="freesansbold.ttf"):
     wn.blit(Text_show, (x, y))
 
 def Showable(num):
-    if num < 10:
+    if num < 100:
         num = math.floor(num * 10) / 10
     else:
         num = math.floor(num)
@@ -70,7 +71,7 @@ while game_running:
 
     # page setup
     if page == 1:
-        sss_a = sub_screen_selectors(0, "a").draw("dark red", True, "red", "C:/Windows/Fonts/agencyr.ttf")
+        sss_a = sub_screen_selectors(0, "a").draw("dark red", True, "red", "Font/a/Rajdhani-Regular.ttf")
 
     page_backwardser = pygame.Rect(0, 800, 125, 75)
     pygame.draw.rect(wn, (130, 130, 130), page_backwardser)
@@ -78,13 +79,18 @@ while game_running:
     pygame.draw.rect(wn, (160, 160, 160), page_fronter)
 
     # game
+
+    # show point
+    Text(f"point: {Showable(point)}", 700, 10, 30, "white")
+    Text(f"(+{Showable(point_g)}/s)", 750, 40, 10, "white")
+
+    #screen
     if page_s == "a":
-        # show point
-        Text(f"point: {Showable(point)}", 700, 30, 30, "white")
-        Text(f"(+{Showable(point_g)}/s)", 750, 60, 10, "white")
+        Text(f"a:{Showable(a)}", 700, 50, 30, "red", "Font/a/Rajdhani-Regular.ttf")
 
     # game functions
     point += point_g / FPS 
+    a = point ** 0.2
 
     clock.tick(50)
     pygame.display.update()
