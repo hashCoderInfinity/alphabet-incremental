@@ -1,4 +1,4 @@
-# set up
+# set up lol
 import pygame, sys, math
 pygame.init()
 
@@ -84,7 +84,7 @@ while game_running:
         Text(f"(+{Showable(point_g)}/s)", 750, 60, 10, "white")
 
     # game functions
-    point += point_g / FPS
+    point += point_g / FPS 
 
     clock.tick(50)
     pygame.display.update()
